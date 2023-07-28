@@ -28,9 +28,11 @@ function myRender(element, container){
     ? document.createTextNode("")
     : document.createElement(element.type)
 
-    const isProperty = key => key !== "children"
+    const isProp = key => key !== "children"
+
+    // for props other than children
     Object.keys(element.props)
-    .filter(isProperty)
+    .filter(isProp)
     .forEach(name => {
       dom[name] = element.props[name]
     })
@@ -47,15 +49,8 @@ const AutoDidact = {
 
 // ----------------------------------------------------------------------
 
-/** @jsx AutoDidact.myCreateElement */
-// const element = (
-//     <div style="background: salmon">
-//       <h1>Hello World</h1>
-//       <h2 style="text-align:right">from AutoDidact</h2>
-//     </div>
-//   );
 
-  const element = AutoDidact.myCreateElement('h1', {id: 'foo'}, 'Hello');
+const element = AutoDidact.myCreateElement('h1', {id: 'foo'}, 'Hello');
 
 // Same
 const container = document.getElementById('root'); 
